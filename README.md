@@ -7,19 +7,10 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-Steps
+* Steps
 * Create a folder locally on your system.
 * Use CMD to navigate to the folder.
 * When in the folder type 'git init'
 * Then type 'git remote add origin https://meckblack@bitbucket.org/bhunacosswebsite/nacoss.git'
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Download the application Meld Merge
+* Create another folder in another location. This where you do your changes then merge before pushing to the repo
