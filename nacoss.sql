@@ -103,7 +103,7 @@ CREATE TABLE `nacoss_login` (
 -- Dumping data for table `nacoss_forum_login`
 --
 
-INSERT INTO `nacoss_login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`,`image`, `activitystate`) VALUES
+INSERT INTO login (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`) VALUES
 (15, 'BHU/13/04/05/0009', '$2y$10$Zj8Q9S054Hk9CfuSACh.k.dgD0wPQ1w.nWRalBMhTLTCZQC2pNAQ2', 'nellytadi@gmail.com', 'Nelly', 'Tadi', 'Student','helloworld.png', '1');
 
 -- --------------------------------------------------------
@@ -161,7 +161,7 @@ ALTER TABLE `nacoss_forum_answers`
 --
 -- Indexes for table `nacoss_forum_login`
 --
-ALTER TABLE `nacoss_login`
+ALTER TABLE login
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
@@ -199,7 +199,7 @@ ALTER TABLE `nacoss_forum_answers`
 --
 -- AUTO_INCREMENT for table `nacoss_forum_login`
 --
-ALTER TABLE `nacoss_login`
+ALTER TABLE login
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `nacoss_forum_questions`
