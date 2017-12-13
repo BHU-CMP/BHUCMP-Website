@@ -17,7 +17,7 @@
     <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
     <meta name="author" content="">
 
-    <title>BHU-NACOSS</title>
+    <title>NACOSS BINGHAM</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -65,14 +65,9 @@
 <!-- FullScreen -->
 <div class="intro-header">
     <div class="col-xs-12 text-center abcen1">
-        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">BHU NACOSS</h1>
-        <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">DEPARTMENT WITH A DIFFERENCE</h3>
-        <ul class="list-inline intro-social-buttons">
-            <li><a href="login.html" class="btn  btn-lg mybutton_cyano wow fadeIn"><span
-                            class="network-name">LOGIN</span></a>
-            </li>
-
-        </ul>
+        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">NACOSS BINGHAM</h1>
+        <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">BUILDING PROFESSIONALS WITH A DIFFERENCE</h3>
+        <ul class="list-inline intro-social-buttons"></ul>
     </div>
     <!-- /.container -->
     <div class="col-xs-12 text-center abcen wow fadeIn">
@@ -96,18 +91,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#home">BHU-NACOSS</a>
+            <a class="navbar-brand" href="#home"><b>NACOSS BHU</b></a>
         </div>
 
         <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-
-                <li class="menuItem"><a href="register.html">REGISTER</a></li>
-                <li class="menuItem"><a href="#whatis">ABOUT US</a></li>
-                <li class="menuItem"><a href="#screen">EXCOS</a></li>
-                <li class="menuItem"><a href="##guest">GUEST</a></li>
-
-                <li class="menuItem dropdown">
+				<li class="menuItem"><a href="#whatis">ABOUT US</a></li>
+				<li class="menuItem dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"><b>ACADEMICS</b>
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -117,6 +107,11 @@
                         <li><a href="#">Timetable</a></li>
 
                     </ul>
+				</li>
+                <li class="menuItem"><a href="javascript(0);">GALLERY</a></li>
+				<li class="menuItem"><a href="#screen">EXCOS</a></li>
+				<li class="menuItem"><a href="http://bhu.gdg.ng">GDG BINGHAM</a></li>
+				<li class="menuItem"><a href="javascript(0);">LOGIN</a></li>
                 <li class="menuItem"><a href="#contact">CONTACT US</a></li>
             </ul>
         </div>
