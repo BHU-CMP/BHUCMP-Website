@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2017 at 12:47 PM
--- Server version: 10.1.22-MariaDB
--- PHP Version: 7.1.4
+-- Generation Time: Dec 12, 2017 at 11:25 PM
+-- Server version: 5.7.11
+-- PHP Version: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `nacoss`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `id`            INT(50)      NOT NULL,
+  `matno`         VARCHAR(50)  NOT NULL,
+  `password`      VARCHAR(255) NOT NULL,
+  `email`         VARCHAR(50)  NOT NULL,
+  `fname`         VARCHAR(50)  NOT NULL,
+  `lname`         VARCHAR(50)  NOT NULL,
+  `status`        TEXT         NOT NULL,
+  `image`         VARCHAR(50)  NOT NULL,
+  `activitystate` VARCHAR(20)  NOT NULL,
+  `gender`        VARCHAR(50)  NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`, `gender`)
+VALUES
+  (23, 'bhu/15/04/05/0012', 'dafcc6108173f4fa342a94a7a61bff594a41db5995991dfb6292306e7f8757e4', 'Cooljoe464@gmail.com',
+   'Joel', 'Onyedinefu', 'Student', '545011.jpg', '1', 'Male');
 
 -- --------------------------------------------------------
 
@@ -84,31 +112,6 @@ CREATE TABLE `nacoss_forum_answers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nacoss_forum_login`
---
-
-CREATE TABLE `nacoss_login` (
-  `id` int(50) NOT NULL,
-  `matno` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `fname` text NOT NULL,
-  `lname` text NOT NULL,
-  `status` text NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `activitystate` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `nacoss_forum_login`
---
-
-INSERT INTO login (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`) VALUES
-(15, 'BHU/13/04/05/0009', '$2y$10$Zj8Q9S054Hk9CfuSACh.k.dgD0wPQ1w.nWRalBMhTLTCZQC2pNAQ2', 'nellytadi@gmail.com', 'Nelly', 'Tadi', 'Student','helloworld.png', '1');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `nacoss_forum_questions`
 --
 
@@ -141,6 +144,13 @@ CREATE TABLE `nacoss_likeanddislike` (
 --
 
 --
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `nacoss_admin`
 --
 ALTER TABLE `nacoss_admin`
@@ -159,13 +169,6 @@ ALTER TABLE `nacoss_forum_answers`
   ADD PRIMARY KEY (`answer_id`);
 
 --
--- Indexes for table `nacoss_forum_login`
---
-ALTER TABLE login
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
 -- Indexes for table `nacoss_forum_questions`
 --
 ALTER TABLE `nacoss_forum_questions`
@@ -182,6 +185,12 @@ ALTER TABLE `nacoss_likeanddislike`
 --
 
 --
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` INT(50) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 24;
+--
 -- AUTO_INCREMENT for table `nacoss_admin`
 --
 ALTER TABLE `nacoss_admin`
@@ -197,11 +206,6 @@ ALTER TABLE `nacoss_contact`
 ALTER TABLE `nacoss_forum_answers`
   MODIFY `answer_id` int(50) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `nacoss_forum_login`
---
-ALTER TABLE login
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
 -- AUTO_INCREMENT for table `nacoss_forum_questions`
 --
 ALTER TABLE `nacoss_forum_questions`
@@ -210,8 +214,7 @@ ALTER TABLE `nacoss_forum_questions`
 -- AUTO_INCREMENT for table `nacoss_likeanddislike`
 --
 ALTER TABLE `nacoss_likeanddislike`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
-
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

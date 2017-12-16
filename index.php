@@ -65,7 +65,7 @@
 <!-- FullScreen -->
 <div class="intro-header">
     <div class="col-xs-12 text-center abcen1">
-        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">NACOSS BINGHAM</h1>
+        <h1 class="h2_home wow fadeIn" data-wow-delay="0.4s">NACOSS BINGHAM</h1>
         <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">BUILDING PROFESSIONALS WITH A DIFFERENCE</h3>
         <ul class="list-inline intro-social-buttons"></ul>
     </div>
@@ -104,15 +104,16 @@
                         <li><a href="#">Courses</a></li>
 
                         <li><a href="#">Project</a></li>
-                        <li><a href="#">Timetable</a></li>
+                        <li><a href="timetable.php">Timetable</a></li>
 
                     </ul>
 				</li>
-                <li class="menuItem"><a href="javascript(0);">GALLERY</a></li>
-				<li class="menuItem"><a href="#screen">EXCOS</a></li>
+                <li class="menuItem"><a href="gallery/gallery.php">GALLERY</a></li>
+                <li class="menuItem"><a href="Excos.php">EXCOS</a></li>
 				<li class="menuItem"><a href="http://bhu.gdg.ng">GDG BINGHAM</a></li>
-				<li class="menuItem"><a href="javascript(0);">LOGIN</a></li>
+                <li class="menuItem"><a href="login.html">LOGIN</a></li>
                 <li class="menuItem"><a href="#contact">CONTACT US</a></li>
+                <li class="menuItem"><a href="admin/index.html">ADMIN</a></li>
             </ul>
         </div>
 
@@ -141,17 +142,16 @@
             </div><!-- /.col-lg-4 -->
 
             <div class="col-sm-4 wow fadeInDown text-center">
-                <img class="rotate img-circle" src="img/bingham_mini.png" alt="Generic placeholder image">
-                <h3>BHU</h3>
+                <img class="rotate img-circle" src="" alt="">
+                <h3></h3>
                 <p class="lead"></p>
                 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
             </div><!-- /.col-lg-4 -->
 
             <div class="col-sm-4 wow fadeInDown text-center">
-                <img class="rotate" src="img/gdg1.png" alt="Generic placeholder image">
-                <h3>GDG</h3>
-                <p class="lead">Google Developer Group The Google Developer Group is a community of developer who use
-                    google tools and products (APIs) to build custom software applications and services.</p>
+                <img class="rotate" src="img/bingham_mini.png" alt="Generic placeholder image">
+                <h3>NACOSS BHU</h3>
+                <p class="lead"></p>
                 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
             </div><!-- /.col-lg-4 -->
 
@@ -161,130 +161,8 @@
 </div>
 
 
-<!-- Screenshot -->
-<div id="screen" class="content-section-b">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center wrap_title ">
-                <h2>EXCOS</h2>
-                <p class="lead" style="margin-top:0"></p>
-            </div>
-        </div>
-        <div class="row wow bounceInUp">
-            <div id="owl-demo" class="owl-carousel">
-
-                <a href="img/1.png" class="image-link">
-                    <b>PRESIDENT</b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>VICE-PRESIDENT</b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>SEC-GEN</b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>ASST-SEC GEN</b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>DOS(DIRECTOR OF SOCIALS)</b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>FINANCIAL SEC</b>
-                    <b></b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>TREASURER</b>
-                    <b></b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>DIRECTOR OF SPORTS</b>
-
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>PROVOST</b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/slide/3.png" alt="Owl Image">
-                    </div>
-                </a>
-
-                <a href="img/1.png" class="image-link">
-                    <b>PRO(PUBLIC RELATIONS OFFICER)</b>
-                    <div class="item">
-                        <img class="img-responsive img-rounded" src="img/1.png" alt="Owl Image">
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-<div id="#guest" class="content-section-c ">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center white">
-            </div>
-            <div class="col-md-6 col-md-offset-3 text-center">
-                <div class="mockup-content">
-                    <div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
-                        <button type="button"><span>GUEST LOGIN</span></button>
-                        <div class="morph-content">
-                            <div>
-                                <div class="content-style-form content-style-form-4 ">
-                                    <h2 class="morph-clone">GUEST LOGIN</h2>
-                                    <form>
-                                        <p><label>Your Email Address</label><input type="text" name="email" id="email"
-                                                                                   title=""/></p>
-                                        <p>
-                                            <button>Login</button>
-                                        </p>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Banner Download -->
-<div id="downloadlink" class="content-section-a">
+<div id="admission" class="content-section-a">
     <div class="container">
         <div class="row">
             <div class="col-sm-4 wow fadeInDown text-center">

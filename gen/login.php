@@ -5,10 +5,18 @@
  * Date: 12/12/2017
  * Time: 1:13 AM
  */
-
+//Users Login//
 session_start();
+
 include_once 'config.php';
+
 $result[] = "";
+
+if (!isset($_SESSION['user'])) {
+    header("Location: ../index.html");
+} else if (isset($_SESSION['user']) != "") {
+    header("Location: ../users/home.php");
+}
 
 if (isset($_REQUEST['login_btn'])) {
     $username = $conn->real_escape_string(strtoupper($_POST['uname']));

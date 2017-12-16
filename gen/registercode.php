@@ -7,7 +7,9 @@
  */
 
 session_start();
-if (isset($_SESSION['user']) != "") {
+if (!isset($_SESSION['user'])) {
+    header("Location: ../index.html");
+} else if (isset($_SESSION['user']) != "") {
     header("Location: ../users/home.php");
 }
 include "config.php";
@@ -25,6 +27,7 @@ if (isset($_REQUEST['register'])) {
         $lname = $conn->real_escape_string(trim($_POST['txt_lname']));
         $status = $conn->real_escape_string(trim($_POST['txt_stat']));
         $gender = $conn->real_escape_string(trim($_POST['txt_gen']));
+        $level = $conn->real_escape_string($_POST['txt_level']);
         $activity = 1;
         $image = $conn->real_escape_string($_FILES['avatar']['name']);
 
@@ -63,7 +66,7 @@ if (isset($_REQUEST['register'])) {
                     echo "<script type='application/javascript'>alert('Email already in use. Input a different one. Refresh the page')</script>";
                     exit();
                 }
-                $side = "INSERT INTO login (matno, password, email, fname, lname, status, image, activitystate, gender) VALUES ('{$matno}','{$pass}','{$email}','{$fname}','{$lname}','{$status}','{$image}','{$activity}','{$gender}')";
+                $side = "INSERT INTO login (matno, password, email, fname, lname, status, image, activitystate, gender, level) VALUES ('{$matno}','{$pass}','{$email}','{$fname}','{$lname}','{$status}','{$image}','{$activity}','{$gender}','{$level}')";
 
                 $data = mysqli_query($conn, $side) or die(mysqli_error($conn));
                 if ($data) {
@@ -71,19 +74,20 @@ if (isset($_REQUEST['register'])) {
                     header("location: ../index.php");
 
                 } else {
-                    header("Location: ../register.html");
+                    echo "<script type='application/javascript'>alert('Sorry an error occured. Please try again later...')</script>";
+                    header("Location: ../register.php");
                 }
             } else {
                 echo "<script type='application/javascript'>alert('Sorry, your image is too large.')</script>";
-                header("Location: ../register.html");
+                header("Location: ../register.php");
             }
         } else {
             echo "<script type='application/javascript'>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.')</script>";
-            header("Location: ../register.html");
+            header("Location: ../register.php");
         }
     } else {
         echo "<script type='application/javascript'>alert('Two password do not match.')</script>";
-        header("Location: ../register.html");
+        header("Location: ../register.php");
     }
 }
 

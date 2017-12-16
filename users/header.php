@@ -56,9 +56,9 @@ if (!isset($_SESSION['user'])) {
                     <span><?php echo $actual_last_name; ?>&nbsp;<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="home.php"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
-                    <li><a href="edit-profile.php?edit_id=<?php echo $_SESSION['user'] ?>" title="click to edit"
+                    <li><a href="edit-profile.php" title="click to edit"
                            onclick="return confirm('sure you want to edit ?')"<span
-                                class="glyphicon glyphicon-edit"></span>&nbsp;Edit Profile</a></li>
+                                class="glyphicon glyphicon-edit"></span>&nbsp;Change Image</a></li>
                     <li><a href="profile.php"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;Profile</a></li>
 
                     <li><a href="../gen/logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign

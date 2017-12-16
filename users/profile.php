@@ -19,7 +19,6 @@
         ?>
 
         <div class=" img-responsive ">
-            <a title="Click to zoom-in and zoom-out " class="zoom" href="../image/<?php echo $actual_image_name; ?>">
                 <img class="img-rounded" width="200" height="200" src="../image/<?php echo $actual_image_name; ?>">
                 <p><?php echo $actual_first_name; ?> <span><?php echo $actual_last_name; ?></span></p>
                 <p></p>
