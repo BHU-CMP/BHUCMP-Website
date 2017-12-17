@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2017 at 11:25 PM
+-- Generation Time: Dec 17, 2017 at 01:07 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.4
 
@@ -23,6 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `image`       VARCHAR(50) NOT NULL,
+  `description` VARCHAR(500) DEFAULT NULL,
+  `id`          BIGINT(50)  NOT NULL
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -36,7 +50,8 @@ CREATE TABLE `login` (
   `status`        TEXT         NOT NULL,
   `image`         VARCHAR(50)  NOT NULL,
   `activitystate` VARCHAR(20)  NOT NULL,
-  `gender`        VARCHAR(50)  NOT NULL
+  `gender`        VARCHAR(50)  NOT NULL,
+  `level`         BIGINT(20)   NOT NULL
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
@@ -45,10 +60,10 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`, `gender`)
+INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`, `gender`, `level`)
 VALUES
-  (23, 'bhu/15/04/05/0012', 'dafcc6108173f4fa342a94a7a61bff594a41db5995991dfb6292306e7f8757e4', 'Cooljoe464@gmail.com',
-   'Joel', 'Onyedinefu', 'Student', '545011.jpg', '1', 'Male');
+  (25, 'bhu/15/04/05/0012', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Cooljoe464@gmail.com',
+       'Joel', 'Onyedinefu', 'Student', '473427.jpg', '1', 'Male', 300);
 
 -- --------------------------------------------------------
 
@@ -57,18 +72,21 @@ VALUES
 --
 
 CREATE TABLE `nacoss_admin` (
-  `id` int(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `activitystate` varchar(50) NOT NULL
+  `id`            int(50)     NOT NULL,
+  `username`      varchar(50) NOT NULL,
+  `password`      varchar(50) NOT NULL,
+  `activitystate` VARCHAR(50) NOT NULL,
+  `email`         INT(11)     NOT NULL,
+  `fname`         VARCHAR(50) NOT NULL,
+  `lname`         VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nacoss_admin`
 --
 
-INSERT INTO `nacoss_admin` (`id`, `username`, `password`, `activitystate`) VALUES
-(1, 'adminusername', '1234', '1');
+INSERT INTO `nacoss_admin` (`id`, `username`, `password`, `activitystate`, `email`, `fname`, `lname`) VALUES
+  (1, 'adminusername', '1234', '1', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -139,22 +157,44 @@ CREATE TABLE `nacoss_likeanddislike` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE `timetable` (
+  `image` INT(11) DEFAULT NULL,
+  `pdf`   VARCHAR(30) NOT NULL
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = latin1;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `login_matno_uindex` (`matno`),
+  ADD UNIQUE KEY `login_email_uindex` (`email`);
 
 --
 -- Indexes for table `nacoss_admin`
 --
 ALTER TABLE `nacoss_admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nacoss_admin_email_uindex` (`email`);
 
 --
 -- Indexes for table `nacoss_contact`
@@ -185,11 +225,16 @@ ALTER TABLE `nacoss_likeanddislike`
 --
 
 --
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` BIGINT(50) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` INT(50) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 24;
+  AUTO_INCREMENT = 26;
 --
 -- AUTO_INCREMENT for table `nacoss_admin`
 --
