@@ -99,7 +99,6 @@
 				<li class="menuItem"><a href="#whatis">ABOUT US</a></li>
 				<li class="menuItem dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"><b>ACADEMICS</b>
-                        <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Courses</a></li>
 
@@ -112,11 +111,11 @@
                 <li class="menuItem"><a href="Excos.php">EXCOS</a></li>
 				<li class="menuItem"><a href="http://bhu.gdg.ng">GDG BINGHAM</a></li>
                 <li class="menuItem"><a href="login.html">LOGIN</a></li>
-                <li class="menuItem"><a href="#contact">CONTACT US</a></li>
+                <li class="menuItem"><a href="#contact">Contact Us</a></li>
+                ji/
                 <li class="menuItem"><a href="admin/index.html">ADMIN</a></li>
             </ul>
         </div>
-
     </div>
 </nav>
 
@@ -157,6 +156,37 @@
 
 
         </div><!-- /.row -->
+    </div>
+</div>
+
+<div class="content-section-c ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center white">
+
+            </div>
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="mockup-content">
+                    <div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
+
+                        <div class="morph-content">
+                            <div>
+                                <div class="content-style-form content-style-form-4 ">
+
+                                    <form>
+                                        <p><label></label><input type="text"/></p>
+                                        <p>
+                                            <button></button>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        >
     </div>
 </div>
 
