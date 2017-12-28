@@ -13,7 +13,7 @@ include_once 'config.php';
 $result[] = "";
 
 if (!isset($_SESSION['user'])) {
-    header("Location: ../index.html");
+    header("Location: ../index.php");
 } else if (isset($_SESSION['user']) != "") {
     header("Location: ../users/home.php");
 }
@@ -28,7 +28,7 @@ if (isset($_REQUEST['login_btn'])) {
     $row = mysqli_fetch_array($response);
 
     if ($row['password'] == $password) {
-        //$result['success'] = "Successfully Logged in <br/><marquee>redirecting...</marquee><a class='btn btn-link' href=\"../index.php\">Click Here to login</a>";
+        //$result['success'] = "Successfully Logged in <br/><marquee>redirecting...</marquee><a class='btn btn-link' href=\"../add.php\">Click Here to login</a>";
         $_SESSION['user'] = $row['matno'];
         header("Location: ../users/home.php");
     } else {

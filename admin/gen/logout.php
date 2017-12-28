@@ -9,9 +9,9 @@
 session_start();
 
 /*if (!isset($_SESSION['admin'])) {
-    header("Location: ../index.html");
+    header("Location: ../index.php");
 } else if (isset($_SESSION['admin']) != "") {
-    header("Location: users/index.html");
+    header("Location: users/index.php");
 }
 */
 
@@ -19,7 +19,8 @@ if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['admin']);
     echo "<script type='application/javascript'>alert('You have been logged out successfully. ')</script>";
-    header("Location: ../index.html");
+    header("Location: ../../index.php");
+
 }
 
 ?>

@@ -44,7 +44,7 @@ if (isset($_POST['save_update'])) {
 
         if ($execute) {
             echo "<script type='application/javascript'>alert('Successfully Updated!!!')</script>";
-            header("location: ../index.php");
+            header("location: ../add.php");
         }
     }
 }

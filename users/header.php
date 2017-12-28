@@ -3,7 +3,7 @@ session_start();
 include_once('../gen/config.php');
 
 if (!isset($_SESSION['user'])) {
-    header("Location: ../index.html");
+    header("Location: ../index.php");
 }
 ?>
 <head>

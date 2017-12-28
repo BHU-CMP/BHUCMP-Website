@@ -8,7 +8,7 @@
 
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: ../index.html");
+    header("Location: ../index.php");
 } else if (isset($_SESSION['user']) != "") {
     header("Location: ../users/home.php");
 }
@@ -43,7 +43,7 @@ if (isset($_REQUEST['register'])) {
         $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
 
         // rename uploading image
-        $image = rand(1000, 1000000) . "." . $imgExt;
+        $image = $fname.$lname . "." . $imgExt;
 
         // allow valid image file formats
         if (in_array($imgExt, $valid_extensions)) {

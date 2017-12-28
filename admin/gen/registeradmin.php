@@ -8,7 +8,7 @@
 session_start();
 include "../../gen/config.php";
 if (!isset($_SESSION['admin'])) {
-    header("Location: ../index.html");
+    header("Location: ../index.php");
 } else if (isset($_SESSION['admin']) != "") {
     header("Location: ../users/home.html");
 }
@@ -49,7 +49,7 @@ if (isset($_REQUEST['registeradmin'])) {
         $data = mysqli_query($conn, $side) or die(mysqli_error($conn));
         if ($data) {
             echo "<script type='application/javascript'>alert('Successfully Registered as Admin')</script>";
-            header("location: ../index.html");
+            header("location: ../index.php");
 
         } else {
             echo "<script type='application/javascript'>alert('Sorry an Error Occured. Please try again or later...')</script>";

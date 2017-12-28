@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2017 at 01:07 PM
+-- Generation Time: Dec 28, 2017 at 09:03 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.4
 
@@ -23,16 +23,48 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `excos`
+--
+
+CREATE TABLE `excos` (
+  `excos_name` varchar(255) NOT NULL,
+  `excos_image` varchar(255) NOT NULL,
+  `excos_title` varchar(255) NOT NULL,
+  `id` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `excos`
+--
+
+INSERT INTO `excos` (`excos_name`, `excos_image`, `excos_title`, `id`) VALUES
+('Banso Wisdom', '76.jpg', 'PRESIDENT', 1),
+('Dalahol Debbie', '93.jpg', 'VICE PRESIDENT', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gallery`
 --
 
 CREATE TABLE `gallery` (
-  `image`       VARCHAR(50) NOT NULL,
-  `description` VARCHAR(500) DEFAULT NULL,
-  `id`          BIGINT(50)  NOT NULL
-)
-  ENGINE = MyISAM
-  DEFAULT CHARSET = latin1;
+  `image` varchar(50) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `id` bigint(50) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`image`, `description`, `id`, `name`) VALUES
+('54.png', 'dndhgcxghfvchhvndbvyjdc', 8, 'GDG BINGHAM'),
+('69.png', 'dghghdfhhkuil;.,knfh', 9, 'GDG BINGHAM'),
+('10.jpg', 'fliaiejlksjaroejwrjhdiudjfrgfvubnfvhcjhvud dbiusdhfdsufd udhfsfa7fhb', 10, 'GDG BINGHAM'),
+('58.jpg', 'wtrrddfglorem ipsum', 11, 'GDG BINGHAM'),
+('68.png', 'qwertyui opasdfghjkl zxcvbnm qwertyuiopasdf ghjklzxcvnm', 12, 'GDG BINGHAM'),
+('14.png', 'fghgh', 13, 'GDG BINGHAM');
 
 -- --------------------------------------------------------
 
@@ -41,29 +73,26 @@ CREATE TABLE `gallery` (
 --
 
 CREATE TABLE `login` (
-  `id`            INT(50)      NOT NULL,
-  `matno`         VARCHAR(50)  NOT NULL,
-  `password`      VARCHAR(255) NOT NULL,
-  `email`         VARCHAR(50)  NOT NULL,
-  `fname`         VARCHAR(50)  NOT NULL,
-  `lname`         VARCHAR(50)  NOT NULL,
-  `status`        TEXT         NOT NULL,
-  `image`         VARCHAR(50)  NOT NULL,
-  `activitystate` VARCHAR(20)  NOT NULL,
-  `gender`        VARCHAR(50)  NOT NULL,
-  `level`         BIGINT(20)   NOT NULL
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = latin1;
+  `id` int(50) NOT NULL,
+  `matno` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `status` text NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `activitystate` varchar(20) NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `level` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`, `gender`, `level`)
-VALUES
-  (25, 'bhu/15/04/05/0012', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Cooljoe464@gmail.com',
-       'Joel', 'Onyedinefu', 'Student', '473427.jpg', '1', 'Male', 300);
+INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`, `gender`, `level`) VALUES
+(28, 'bhu/15/04/05/0003', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'kassandraakut@gmail.com', 'Cassandra', 'Akut', 'Student', 'CassandraAkut.jpg', '1', 'Female', 300),
+(29, 'bhu/15/04/05/0012', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Cooljoe464@gmail.com', 'Joel', 'Onyedinefu', 'Student', 'JoelOnyedinefu.jpg', '1', 'Male', 300);
 
 -- --------------------------------------------------------
 
@@ -72,13 +101,13 @@ VALUES
 --
 
 CREATE TABLE `nacoss_admin` (
-  `id`            int(50)     NOT NULL,
-  `username`      varchar(50) NOT NULL,
-  `password`      varchar(50) NOT NULL,
-  `activitystate` VARCHAR(50) NOT NULL,
-  `email`         INT(11)     NOT NULL,
-  `fname`         VARCHAR(50) NOT NULL,
-  `lname`         VARCHAR(50) NOT NULL
+  `id` int(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `activitystate` varchar(50) NOT NULL,
+  `email` int(11) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -86,7 +115,7 @@ CREATE TABLE `nacoss_admin` (
 --
 
 INSERT INTO `nacoss_admin` (`id`, `username`, `password`, `activitystate`, `email`, `fname`, `lname`) VALUES
-  (1, 'adminusername', '1234', '1', 0, '', '');
+(1, 'adminusername', '1234', '1', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -164,15 +193,19 @@ CREATE TABLE `nacoss_likeanddislike` (
 --
 
 CREATE TABLE `timetable` (
-  `image` INT(11) DEFAULT NULL,
-  `pdf`   VARCHAR(30) NOT NULL
-)
-  ENGINE = MyISAM
-  DEFAULT CHARSET = latin1;
+  `image` int(11) DEFAULT NULL,
+  `pdf` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `excos`
+--
+ALTER TABLE `excos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `gallery`
@@ -225,16 +258,20 @@ ALTER TABLE `nacoss_likeanddislike`
 --
 
 --
+-- AUTO_INCREMENT for table `excos`
+--
+ALTER TABLE `excos`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` BIGINT(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` INT(50) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 26;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `nacoss_admin`
 --
@@ -259,7 +296,7 @@ ALTER TABLE `nacoss_forum_questions`
 -- AUTO_INCREMENT for table `nacoss_likeanddislike`
 --
 ALTER TABLE `nacoss_likeanddislike`
-  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

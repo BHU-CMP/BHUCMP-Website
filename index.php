@@ -107,12 +107,10 @@
 
                     </ul>
 				</li>
-                <li class="menuItem"><a href="gallery/gallery.php">GALLERY</a></li>
-                <li class="menuItem"><a href="Excos.php">EXCOS</a></li>
+                <li class="menuItem"><a href="excos/index.php">EXCOS</a></li>
 				<li class="menuItem"><a href="http://bhu.gdg.ng">GDG BINGHAM</a></li>
                 <li class="menuItem"><a href="login.html">LOGIN</a></li>
                 <li class="menuItem"><a href="#contact">Contact Us</a></li>
-                ji/
                 <li class="menuItem"><a href="admin/index.html">ADMIN</a></li>
             </ul>
         </div>
@@ -159,34 +157,26 @@
     </div>
 </div>
 
-<div class="content-section-c ">
+<div  class="content-section-c ">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center white">
 
-            </div>
             <div class="col-md-6 col-md-offset-3 text-center">
                 <div class="mockup-content">
                     <div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
-
+                        <button type="button" ><span>Click here to view our Gallery.</span></button>
                         <div class="morph-content">
                             <div>
                                 <div class="content-style-form content-style-form-4 ">
+                                    <h2 class="morph-clone"><a href="gallery/index.php">Click here to view our Gallery.</a></h2>
 
-                                    <form>
-                                        <p><label></label><input type="text"/></p>
-                                        <p>
-                                            <button></button>
-                                        </p>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        >
+        </div>>
     </div>
 </div>
 
