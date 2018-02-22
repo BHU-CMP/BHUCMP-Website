@@ -10,8 +10,3 @@
     define('DB_PASSWORD', '');
     define('DB_DATABASE', 'nacoss');
     $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-    if ($conn) {
-
-    } else {
-        echo "Unsuccessful";
-    }

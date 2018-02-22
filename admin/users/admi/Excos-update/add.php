@@ -1,40 +1,5 @@
 <?php
-
 include ("../../../gen/session.php");
-
-    $excos_title = $conn->real_escape_string(strtoupper($_POST['excos_title']));
-    $excos_name = $conn->real_escape_string(trim($_POST['excos_name']));
-    $excos_image = $conn->real_escape_string($_FILES['avatar']['name']);
-
-    $tmp_dir = $_FILES['avatar']['tmp_name'];
-    $imgSize = $_FILES['avatar']['size'];
-
-    $upload = "excosimages/";
-
-    $imgExt = strtolower(pathinfo($excos_image, PATHINFO_EXTENSION)); // get image extension
-
-    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-
-    $excos_image = rand(10, 100) . "." . $imgExt;
-
-    if (in_array($imgExt, $valid_extensions)) {
-// Check file size '2MB'
-        if ($imgSize < 2000000) {
-            move_uploaded_file($tmp_dir, $upload . $excos_image);
-
-
-            $query = "INSERT INTO excos(excos_name, excos_image, excos_title) VALUES ('{$excos_name}','{$excos_image}','{$excos_title}')";
-            $data = mysqli_query($conn, $query);
-            if ($data) {
-                header("location: index.php");
-                echo "<script type='application/javascript'>alert('Successfully Uploaded')</script>";
-
-            } else {
-
-                echo "<script type='application/javascript'>alert('Error uploading file')</script>";
-            }
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,7 +43,7 @@ include ("../../../gen/session.php");
 <div class="wrapper">
     <header class="main-header ">
         <!-- Logo -->
-        <a href="" class="logo">
+        <a href="../nacoss.jpg" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>B</b>NA</span>
             <!-- logo for regular state and mobile devices -->
@@ -97,13 +62,13 @@ include ("../../../gen/session.php");
                     <!--User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="../nacoss.jpg" class="user-image" alt="User Image">
                             <span class="hidden-xs"><?php echo $_SESSION['admin']; ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="../nacoss.jpg" class="img-circle" alt="User Image">
 
                                 <p>
                                     <?php echo $_SESSION['admin']; ?> - BHUNACOSS ADMIN
@@ -138,7 +103,7 @@ include ("../../../gen/session.php");
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../nacoss.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?php echo $_SESSION['admin']; ?></p>
@@ -165,37 +130,9 @@ include ("../../../gen/session.php");
                     </a>
 
                 </li>
-                <li class="#">
-                    <a href="../pages/layout/fixed.php">
-                        <i class="fa fa-files-o"></i>
-                        <span>Fixed</span>
-                        <span class="pull-right-container">
-            </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../pages/calendar.php">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/mailbox/mailbox.php">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Folders</span>
+                        <i class="fa fa-share"></i> <span>Opreations</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -222,67 +159,67 @@ include ("../../../gen/session.php");
     </aside>
 
     <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1 class="h2">Add new user. <a class="btn btn-default" href="index.php"> <span
-                                class="glyphicon glyphicon-eye-open"></span> &nbsp; view all </a></h1>
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1 class="h2">Add new user. <a class="btn btn-default" href="index.php"> <span
+                            class="glyphicon glyphicon-eye-open"></span> &nbsp; view all </a></h1>
 
-            </section>
+        </section>
 
-            <section class="content">
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <?php
-                    if (isset($errMSG)) {
-                        ?>
-                        <div class="alert alert-danger">
-                            <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong>
-                        </div>
-                        <?php
-                    } else if (isset($successMSG)) {
-                        ?>
-                        <div class="alert alert-success">
-                            <strong><span class="glyphicon glyphicon-info-sign"></span> <?php echo $successMSG; ?></strong>
-                        </div>
-                        <?php
-                    }
+        <section class="content">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <?php
+                if (isset($errMSG)) {
                     ?>
+                    <div class="alert alert-danger">
+                        <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong>
+                    </div>
+                    <?php
+                } else if (isset($successMSG)) {
+                    ?>
+                    <div class="alert alert-success">
+                        <strong><span class="glyphicon glyphicon-info-sign"></span> <?php echo $successMSG; ?></strong>
+                    </div>
+                    <?php
+                }
+                ?>
 
-                    <form method="POST" enctype="multipart/form-data" class="form-horizontal">
+                <form method="POST" action="add2.php" enctype="multipart/form-data" class="form-horizontal">
 
-                        <table class="table table-bordered table-responsive">
+                    <table class="table table-bordered table-responsive">
 
-                            <tr>
-                                <td><input class="form-control" type="text" name="excos_title" placeholder="Enter title of existing exco" /></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" type="text" name="excos_name" placeholder="Enter Full Names of existing exco"/></td>
-                            </tr>
-                            <tr>
-                                <td><input class="input-group" type="file" name="avatar" accept="image/*"/></td>
-                            </tr>
+                        <tr>
+                            <td><input class="form-control" type="text" name="excos_title" placeholder="Enter title of existing exco" /></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control" type="text" name="excos_name" placeholder="Enter Full Names of existing exco"/></td>
+                        </tr>
+                        <tr>
+                            <td><input class="input-group" type="file" name="avatar" accept="image/*"/></td>
+                        </tr>
 
-                            <tr>
-                                <td colspan="2">
-                                    <button type="submit" name="btnsave" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-save"></span> &nbsp; save
-                                    </button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" name="btnsave" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-save"></span> &nbsp; save
+                                </button>
+                            </td>
+                        </tr>
 
-                        </table>
+                    </table>
 
-                    </form>
+                </form>
 
 
-                    <!-- right col -->
-                </div>
-                <!-- /.row (main row) -->
+                <!-- right col -->
+            </div>
+            <!-- /.row (main row) -->
 
-            </section>
-            <!-- /.content -->
-        </div>
+        </section>
+        <!-- /.content -->
     </div>
+</div>
 <footer class="main-footer">
 
     <strong>Copyright &copy; 2017 <a href="https://adminlte.io">BHU-NACOSS</a>.</strong> All rights

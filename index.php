@@ -103,15 +103,15 @@
                         <li><a href="#">Courses</a></li>
 
                         <li><a href="#">Project</a></li>
-                        <li><a href="timetable.php">Timetable</a></li>
+                        <li><a href="#">Timetable</a></li>
 
                     </ul>
 				</li>
                 <li class="menuItem"><a href="excos/index.php">EXCOS</a></li>
 				<li class="menuItem"><a href="http://bhu.gdg.ng">GDG BINGHAM</a></li>
-                <li class="menuItem"><a href="login.html">LOGIN</a></li>
+                <li class="menuItem"><a href="login.php">LOGIN</a></li>
                 <li class="menuItem"><a href="#contact">Contact Us</a></li>
-                <li class="menuItem"><a href="admin/index.html">ADMIN</a></li>
+                <li class="menuItem"><a href="admin/index.php">ADMIN</a></li>
             </ul>
         </div>
     </div>
@@ -127,32 +127,14 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-4 wow fadeInDown text-center">
+            <div class="col-sm-4 wow fadeInDown text-center col-md-6 col-md-offset-3 ">
                 <img class="rotate" src="img/nacoss.jpg" alt="Generic placeholder image" width="150" height="150">
                 <h3>NACOSS</h3>
                 <p class="lead">NACOSS The Nigerian Association of Computer Science Students (NACOSS) is a student
                     professional body with presence in almost all tertiary institutions in Nigeria (both private and
                     government owned).NACOSS was founded by groups of students in July 1993 with the backing of Nigerian
                     Computer Society (NCS) as its parent body. </p>
-
-                <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-sm-4 wow fadeInDown text-center">
-                <img class="rotate img-circle" src="" alt="">
-                <h3></h3>
-                <p class="lead"></p>
-                <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-sm-4 wow fadeInDown text-center">
-                <img class="rotate" src="img/bingham_mini.png" alt="Generic placeholder image">
-                <h3>NACOSS BHU</h3>
-                <p class="lead"></p>
-                <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-
+            </div>
         </div><!-- /.row -->
     </div>
 </div>
@@ -164,11 +146,11 @@
             <div class="col-md-6 col-md-offset-3 text-center">
                 <div class="mockup-content">
                     <div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
-                        <button type="button" ><span>Click here to view our Gallery.</span></button>
+                        <button type="button" ><span>Gallery</span></button>
                         <div class="morph-content">
                             <div>
                                 <div class="content-style-form content-style-form-4 ">
-                                    <h2 class="morph-clone"><a href="gallery/index.php">Click here to view our Gallery.</a></h2>
+                                    <h2 class="morph-clone"><a href="gallery/index.php">Gallery</a></h2>
 
                                 </div>
                             </div>
@@ -295,11 +277,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h3 class="footer-title">Developed by ???</h3>
-                <p>???<br/>
-                    ???<br/>
-                    Go to: <a href="http://www.binghamuni.edu.ng" target="_blank">Bingham Full Site</a>
-                </p>
+                <h3 class="footer-title">Developed by:
+                    <p>
+                        <a href="malito:cooljoe464@gmail.com">Onyedinefu Joel</a><br/>
+                        <a href="malito:Speedyclesh@gmail.com">Godfrey Akusuk</a><br><br>
+                        Go to: <a href="http://www.binghamuni.edu.ng" target="_blank">Bingham Site</a>
+                    </p></h3>
+
 
                 <!-- LICENSE -->
                 <a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"

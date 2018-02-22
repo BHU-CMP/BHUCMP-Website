@@ -17,7 +17,7 @@ if (isset($_GET['delete_id'])) {
     $stmt_delete->bindParam(':uid', $_GET['delete_id']);
     $stmt_delete->execute();
 
-    header("Location: add.php");
+    header("Location: index.php");
 }
 include "dbconfig.php";
 ?>
@@ -63,7 +63,7 @@ include "dbconfig.php";
 <div class="wrapper">
     <header class="main-header ">
         <!-- Logo -->
-        <a href="" class="logo">
+        <a href="../nacoss.jpg" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>B</b>NA</span>
             <!-- logo for regular state and mobile devices -->
@@ -82,13 +82,13 @@ include "dbconfig.php";
                     <!--User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="../nacoss.jpg" class="user-image" alt="User Image">
                             <span class="hidden-xs"><?php echo $_SESSION['admin']; ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="../nacoss.jpg" class="img-circle" alt="User Image">
 
                                 <p>
                                     <?php echo $_SESSION['admin']; ?> - BHUNACOSS ADMIN
@@ -122,7 +122,7 @@ include "dbconfig.php";
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../nacoss.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?php echo $_SESSION['admin']; ?></p>
@@ -149,37 +149,9 @@ include "dbconfig.php";
                     </a>
 
                 </li>
-                <li class="#">
-                    <a href="../pages/layout/fixed.php">
-                        <i class="fa fa-files-o"></i>
-                        <span>Fixed</span>
-                        <span class="pull-right-container">
-            </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../pages/calendar.php">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/mailbox/mailbox.php">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Folders</span>
+                        <i class="fa fa-share"></i> <span>Opreations</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -219,10 +191,10 @@ include "dbconfig.php";
             <div class="row">
                 <?php
 
-                $stmt = $DB_con->prepare('SELECT * FROM excos ORDER BY id DESC');
+                $stmt = $DB_con->prepare('SELECT * FROM excos ORDER BY id ASC ');
                 $stmt->execute();
 
-                if ($stmt->rowCount() > 30) {
+                if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
                 ?>
@@ -231,8 +203,8 @@ include "dbconfig.php";
                     <p class="page-header" title="Click to view"><?php echo $row['excos_title']; ?></p>
                     <p class="page-header" title="Click to view"><?php echo $row['excos_name']; ?></p>
 
-                    <a title="Click to zoom-in and zoom-out" class="zoom"  href="excosimages/<?php echo $row['avatar']; ?>" >
-                        <img  src="excosimages/<?php echo $row['excos_image']; ?>" class="img-rounded" width="250px" height="250px" /></a>
+                    <a title="Click to zoom-in and zoom-out" class="zoom"  href="excosimages/<?php echo $row['excos_image']; ?>" >
+                        <img  src="excosimages/<?php echo $row['excos_image']; ?>" class="img-rounded" width="150px" height="150px" /></a>
                     <p class="pagination">
 				<span>
 				<a class="btn btn-danger" href="?delete_id=<?php echo $row['id']; ?>" title="click to delete" onclick="return confirm(' Are you sure you want to delete ?')"><span class="glyphicon glyphicon-trash"></span> Delete</a>

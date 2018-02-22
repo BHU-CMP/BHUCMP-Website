@@ -10,8 +10,12 @@ if (!isset($_SESSION['user'])) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="../bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <script type="text/javascript" src="../js/jquery-1.11.3-jquery.min.js"></script>
+    <!-- Custom Google Web Font -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic'
+          rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="../style.css" type="text/css"/>
     <title>Your Profile</title>
     <style>
@@ -38,7 +42,7 @@ if (!isset($_SESSION['user'])) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">BHUNACOSS</a>
+            <a class="navbar-brand" href="#">BHU-NACOSS</a>
         </div>
 
         <ul class="nav navbar-nav navbar-right">

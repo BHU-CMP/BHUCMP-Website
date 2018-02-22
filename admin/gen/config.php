@@ -10,10 +10,5 @@ define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_DATABASE', 'nacoss');
 $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-// show errors (remove this line if on a live site)
-mysqli_report(MYSQLI_REPORT_ERROR);
-if ($conn) {
 
-} else {
-    echo "Unsuccessful";
-}
+mysqli_report(MYSQLI_REPORT_ERROR);

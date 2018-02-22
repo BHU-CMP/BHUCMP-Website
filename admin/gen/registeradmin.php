@@ -14,7 +14,7 @@ if (!isset($_SESSION['admin'])) {
 }
 
 error_reporting(''); // avoid notice
-
+$adm='';
 
 if (isset($_REQUEST['registeradmin'])) {
 
@@ -31,8 +31,7 @@ if (isset($_REQUEST['registeradmin'])) {
         $run = mysqli_query($conn, $checkUName);
 
         if (mysqli_num_rows($run) > 0) {
-            echo "<script type='application/javascript'>alert('Matric Number already registered. Input a different one. Refresh the page')</script>";
-            header("Location: ../register.php");
+            $adm='Matric Number already registered.';
             exit();
         }
 
@@ -40,24 +39,19 @@ if (isset($_REQUEST['registeradmin'])) {
         $rum = mysqli_query($conn, $checkName);
 
         if (mysqli_num_rows($rum) > 0) {
-            echo "<script type='application/javascript'>alert('Email already in use. Input a different one. Refresh the page')</script>";
-            header("Location: ../register.php");
+            $adm='Email already in use.';
             exit();
         }
         $side = "INSERT INTO nacoss_admin (username, password, email, fname, lname, activitystate) VALUES ('{$username}','{$pass}','{$email}','{$fname}','{$lname}','{$activity}')";
 
         $data = mysqli_query($conn, $side) or die(mysqli_error($conn));
         if ($data) {
-            echo "<script type='application/javascript'>alert('Successfully Registered as Admin')</script>";
-            header("location: ../index.php");
-
+            $adm='Successfully Registered as Admin';
         } else {
-            echo "<script type='application/javascript'>alert('Sorry an Error Occured. Please try again or later...')</script>";
-            header("Location: ../register.php");
+            $adm='Sorry an Error Occured. Please try again or later...';
         }
     } else {
-        echo "<script type='application/javascript'>alert('Two password do not match.')</script>";
-        header("Location: ../register.php");
+        $adm='Two password do not match.';
     }
 
 }

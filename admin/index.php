@@ -11,7 +11,7 @@
 </head>
 
 <body style="background-color: #1e2a36">
-<nav class="navbar-default" role="navigation">
+<nav class="navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -20,27 +20,30 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../index.php">BHU-NACOSS</a>
+            <a class="navbar-brand btn-success" href="../index.php">BHU-NACOSS</a>
         </div>
 
-        <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+       <!-- <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
-                <li class="menuItem"><a href="../index.php">HOME</a></li>
+                <li><a class=" navbar-brand btn-success" href="../index.php">HOME</a></li>
             </ul>
         </div>
-
+-->
     </div>
 </nav>
 
 <div class="modal-dialog modal-sm">
-
+    <?php require_once "gen/login.php";?>
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="Login">BHUNACOSS-ADMIN-LOGIN</h4>
+            <h4 class="modal-title text-center" id="Login">ADMIN-LOGIN</h4>
         </div>
         <div class="modal-body">
-            <form action="gen/login.php" method="post">
+            <?php if ($login){
+                echo $login;
+            }?><br>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" name="uname" id="email-modal"
                            placeholder="Email or username" required="">

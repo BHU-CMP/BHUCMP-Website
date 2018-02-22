@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -10,12 +11,11 @@ session_start();
 
 include_once 'config.php';
 
-$result[] = "";
-
+$login = '';
 if (!isset($_SESSION['user'])) {
-    header("Location: ../index.php");
+
 } else if (isset($_SESSION['user']) != "") {
-    header("Location: ../users/home.php");
+   header("Location: users/home.php");
 }
 
 if (isset($_REQUEST['login_btn'])) {
@@ -26,15 +26,21 @@ if (isset($_REQUEST['login_btn'])) {
     $query = "SELECT * FROM login WHERE matno='$username' OR email='$username'";
     $response = $conn->query($query);
     $row = mysqli_fetch_array($response);
-
+    $user_id = $row['id'];
+    $Account_status = $row['activitystate'];
+    $current_state = $row['online'];
     if ($row['password'] == $password) {
-        //$result['success'] = "Successfully Logged in <br/><marquee>redirecting...</marquee><a class='btn btn-link' href=\"../add.php\">Click Here to login</a>";
-        $_SESSION['user'] = $row['matno'];
-        header("Location: ../users/home.php");
-    } else {
-        echo '<script type="application/javascript">alert("Login Failed...")</script>';
-        header("Location: ../login.html");
+        if ($Account_status == 'Deactivated'){
+            $login='Sorry your account has been deactivated. Please contact any of your excos.';
+        }else{
+            $_SESSION['user'] = $row['matno'];
+            $upd="UPDATE login SET online='Online' WHERE id='$user_id'";
+            $updr=mysqli_query($conn, $upd);
+            header("Location: users/home.php");
+        }
 
+    } else {
+       $login = 'Wrong Password';
     }
 
 

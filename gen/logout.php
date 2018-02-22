@@ -6,17 +6,16 @@
  * Time: 1:07 PM
  */
 
+include "config.php";
 session_start();
 
-if (!isset($_SESSION['user'])) {
-    header("Location: ../index.php");
-} else if (isset($_SESSION['user']) != "") {
-    header("Location: users/home.php");
-}
-
 if (isset($_GET['logout'])) {
-    session_destroy();
+    $session_id = $_SESSION['user'];
+    $upd="UPDATE login SET online='Offline' WHERE matno='$session_id'";
+    $updr=mysqli_query($conn, $upd);
+
     unset($_SESSION['user']);
+    session_destroy();
     header("Location: ../index.php");
 }
 

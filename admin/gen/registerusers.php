@@ -6,12 +6,9 @@
  * Time: 3:37 PM
  */
 
-session_start();
-
-include "config.php";
 
 $register='';
-if (isset($_REQUEST['register'])) {
+if (isset($_REQUEST['btnsave'])) {
 
     if ($_POST['txt_pass'] == $_POST['txt_cpass']) {
 
@@ -23,15 +20,14 @@ if (isset($_REQUEST['register'])) {
         $status = $conn->real_escape_string(trim($_POST['txt_stat']));
         $gender = $conn->real_escape_string(trim($_POST['txt_gen']));
         $level = $conn->real_escape_string($_POST['txt_level']);
-        $image = $conn->real_escape_string($_FILES['avatar']['name']);
         $online = "Online";
         $activity = "Activated";
         $date = date("d:m:y");
+        $image = $conn->real_escape_string($_FILES['avatar']['name']);
         $tmp_dir = $_FILES['avatar']['tmp_name'];
         $imgSize = $_FILES['avatar']['size'];
 
-
-        $upload_dir = '../image/'; // upload directory. My problem
+        $upload_dir = '../../image/'; // upload directory.
 
         $imgExt = strtolower(pathinfo($image, PATHINFO_EXTENSION)); // get image extension
 
@@ -65,7 +61,6 @@ if (isset($_REQUEST['register'])) {
                 $data = mysqli_query($conn, $side) or die(mysqli_error($conn));
                 if ($data) {
                     $register='Successfully Registered';
-                    header("Location: login.php");
                 } else {
                     $register='Sorry an error occured. Please try again later...';
                 }

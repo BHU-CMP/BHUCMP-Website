@@ -52,7 +52,7 @@ include "../../gen/session.php";
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="nacoss.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?php echo $_SESSION['admin']; ?></p>
@@ -79,37 +79,9 @@ include "../../gen/session.php";
                     </a>
 
                 </li>
-                <li class="#">
-                    <a href="pages/layout/fixed.php">
-                        <i class="fa fa-files-o"></i>
-                        <span>Fixed</span>
-                        <span class="pull-right-container">
-            </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pages/calendar.php">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/mailbox/mailbox.php">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Folders</span>
+                        <i class="fa fa-share"></i> <span>Opreations</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -159,7 +131,7 @@ include "../../gen/session.php";
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?php include "usersreginfo.php";?></h3>
 
                             <p>User Registrations</p>
                         </div>
@@ -170,20 +142,7 @@ include "../../gen/session.php";
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-red">
-                        <div class="inner">
-                            <h3>65</h3>
-
-                            <p>Unique Visitors</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
+               <?php include "usersontxt.php"?>
                 <!-- ./col -->
             </div>
             <!-- /.row -->
@@ -469,7 +428,7 @@ include "../../gen/session.php";
     <!-- /.content-wrapper -->
     <footer class="main-footer">
 
-        <strong>Copyright &copy; 2017 <a href="https://adminlte.io">BHU-NACOSS</a>.</strong> All rights
+        <strong>Copyright &copy; 2018 <a href="https://bhunacoss.com">BHU-NACOSS</a>.</strong> All rights
         reserved.
     </footer>
     <!-- Control Sidebar -->

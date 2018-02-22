@@ -3,7 +3,7 @@ include "../../../gen/session.php";
 ?>
 
 <?php
-require_once 'dbconfig.php';
+
 /**
  * Created by PhpStorm.
  * User: Joe_Pc
@@ -14,13 +14,39 @@ require_once 'dbconfig.php';
 
 if (isset($_GET['view_id']) && !empty($_GET['view_id'])) {
     $id = $_GET['view_id'];
-    $stmt = $DB_con->prepare('SELECT * FROM login ORDER BY id =:uid DESC');
-    $stmt->execute(array(':uid' => $id));
-    $edit_row = $stmt->fetch(PDO::FETCH_ASSOC);
-    extract($edit_row);
-} else {
-    echo '<script> alert("Error get user information. Please try again.")</script>';
-    header("Location: add.php");
+
+    $query= "SELECT * FROM login WHERE id = '$id'";
+
+    $end =  mysqli_fetch_assoc(mysqli_query($conn, $query));
+
+    extract($end);
+}
+
+if(isset($_REQUEST['active_id']) && $_REQUEST['act']=='st')
+{
+    $id=base64_decode($_REQUEST['active_id']);
+    $sel_user="SELECT * FROM login WHERE id='$id'";
+    $res=mysqli_query($conn,$sel_user);
+    $fet=mysqli_fetch_array($res);
+    if($fet['activitystate']=='Activated')
+    {
+        $upd="UPDATE login SET activitystate='Deactivated' WHERE id='$id'";
+        $updr=mysqli_query($conn, $upd);
+        echo "<script>alert('Account Deactivated');
+				window.location='index.php';
+			</script>";
+
+
+    }
+    else
+    {
+        $upd="UPDATE login SET activitystate='Activated' WHERE id='$id'";
+        $updr=mysqli_query($conn, $upd);
+        echo "<script>alert('Account Activated');
+				window.location='index.php';
+			</script>";
+
+    }
 }
 ?>
 
@@ -83,13 +109,13 @@ if (isset($_GET['view_id']) && !empty($_GET['view_id'])) {
                 <!--User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="../nacoss.jpg" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?php echo $_SESSION['admin']; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="../nacoss.jpg" class="img-circle" alt="User Image">
 
                             <p>
                                 <?php echo $_SESSION['admin']; ?> - BHUNACOSS ADMIN
@@ -104,7 +130,7 @@ if (isset($_GET['view_id']) && !empty($_GET['view_id'])) {
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="../../gen/logout.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="../../../gen/logout.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
@@ -154,37 +180,9 @@ if (isset($_GET['view_id']) && !empty($_GET['view_id'])) {
                     </a>
 
                 </li>
-                <li >
-                    <a href="../pages/layout/fixed.php">
-                        <i class="fa fa-files-o"></i>
-                        <span>Fixed</span>
-                        <span class="pull-right-container">
-            </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../pages/calendar.php">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/mailbox/mailbox.php">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Folders</span>
+                        <i class="fa fa-share"></i> <span>Opreations</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -200,7 +198,7 @@ if (isset($_GET['view_id']) && !empty($_GET['view_id'])) {
                             <ul class="treeview-menu">
                                 <li><a href="../Excos-update/index.php"><i class="fa fa-circle-o"></i> Exco's Update</a></li>
                                 <li class="treeview">
-                                    <a href="../Excos-update/add.php"><i class="fa fa-circle-o"></i> Update
+                                    <a href="../Excos-update/add2.php"><i class="fa fa-circle-o"></i> Update
                                         <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -219,7 +217,7 @@ if (isset($_GET['view_id']) && !empty($_GET['view_id'])) {
     <div class="content-wrapper">
 
         <section class="content-header">
-    <h3>Details of <b><?php echo $edit_row['fname'] . "&nbsp;" . $edit_row['lname']; ?></b></h3>
+    <h3>Details of <b><?php echo $end['fname'] . "&nbsp;" . $end['lname']; ?></b></h3>
 
     <table class="table table-responsive pagination">
 
@@ -229,18 +227,47 @@ if (isset($_GET['view_id']) && !empty($_GET['view_id'])) {
             <td><label class="control-label">First Name</label></td>
             <td><label class="control-label">Last Name</label></td>
             <td><label class="control-label">Status</label></td>
-            <td><label class="control-label">Gender.</label></td>
             <td><label class="control-label">Level</label></td>
+            <td><label class="control-label">Activate/ Deactivate</label></td>
         </tr>
         <tr>
-            <td class="size"><img src="../../../../image/<?php echo $edit_row['image']; ?>" class="img-rounded"
+            <td class="size"><img src="../../../../image/<?php echo $end['image']; ?>" class="img-rounded"
                                   width="250px" height="250px"/></td>
-            <td class="size"><?php echo $edit_row['email']; ?></td>
-            <td class="size"><?php echo $edit_row['email']; ?></td>
-            <td class="size"><?php echo $edit_row['fname']; ?></td>
-            <td class="size"><?php echo $edit_row['lname']; ?></td>
-            <td class="size"><?php echo $edit_row['status']; ?></td>
-            <td class="size"><?php echo $edit_row['level']; ?></td>
+            <td class="size"><?php echo $end['email']; ?></td>
+            <td class="size"><?php echo $end['fname']; ?></td>
+            <td class="size"><?php echo $end['lname']; ?></td>
+            <td class="size"><?php  if($end['activitystate']=='Activated') {
+                    echo "<span style='color:BLUE'>Activated</span>";
+                }
+                else
+                {
+                    echo "<span style='color:red'>Inactive</span>";
+                }
+                ?></td>
+            <td class="size">
+                <?php echo $end['level']; ?></td>
+            <td><a class="btn btn-adn" href="view.php?active_id=<?php echo base64_encode($end['id']);?>&amp;act=st"><?php
+                    if($end['activitystate'] == 'Deactivated')
+                    {
+                        echo "Activate";
+                    }
+                    else
+                    {
+                        echo "Deactivate";
+                    }
+                    ?>
+
+                </a>
+            </td>
+            <td class="size"><?php  if($end['online']=='Offline') {
+                    echo "<i class=\"fa fa-circle text-black\">Offline</i>";
+                }
+                else
+                {
+                    echo "<i class=\"fa fa-circle text-success\">Online</i>";
+                }
+                ?>
+            </td>
         </tr>
     </table>
 

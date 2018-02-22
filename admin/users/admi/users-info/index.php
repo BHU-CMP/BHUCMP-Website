@@ -1,7 +1,6 @@
     <?php
     include "../../../gen/session.php";
     ?>
-
     <!DOCTYPE html >
     <html>
     <head>
@@ -37,6 +36,33 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
         <!--endif-->
+        <script >
+            $(document).ready(function () {
+                $("#filter").keyup(function () {
+
+                    // Retrieve the input field text and reset the count to zero
+                    var filter = $(this).val(), count = 0;
+
+                    // Loop through the list
+                    $(".text-info b").each(function () {
+
+                        // If the list item does not contain the text phrase fade it out
+                        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                            $(this).fadeOut();
+
+                            // Show the list item if the phrase matches and increase the count by 1
+                        } else {
+                            $(this).show();
+                            count++;
+                        }
+                    });
+
+                    // Update the count
+                    var numberItems = count;
+                    $("#filter-count").text("Number of Students = " + count);
+                });
+            });
+        </script>
 <style>
     .css-serial {
         counter-reset: serial-number;  /* Set the serial number counter to 0 */
@@ -54,9 +80,9 @@
 
     <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-        <header class="main-header ">
+        <header class="main-header navbar-fixed-top ">
             <!-- Logo -->
-            <a href="" class="logo">
+            <a href="../nacoss.jpg" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>B</b>NA</span>
                 <!-- logo for regular state and mobile devices -->
@@ -75,36 +101,31 @@
                         <!--User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="../nacoss.jpg" class="user-image" alt="User Image">
                                 <span class="hidden-xs"><?php echo $_SESSION['admin']; ?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="../nacoss.jpg" class="img-circle" alt="User Image">
 
                                     <p>
                                         <?php echo $_SESSION['admin']; ?> - BHUNACOSS ADMIN
-                                        <small>Member since Nov. 2012</small>
+                                        <small>Member since.</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
 
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
-                                    <div class="pull-right">
+
+                                    <div class="pull-center">
                                         <a href="../../../gen/logout.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
                         </li>
                         <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -116,7 +137,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../nacoss.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?php echo $_SESSION['admin']; ?></p>
@@ -143,37 +164,9 @@
                     </a>
 
                 </li>
-                <li >
-                    <a href="../pages/layout/fixed.php">
-                        <i class="fa fa-files-o"></i>
-                        <span>Fixed</span>
-                        <span class="pull-right-container">
-                </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../pages/calendar.php">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-                  <small class="label pull-right bg-red">3</small>
-                  <small class="label pull-right bg-blue">17</small>
-                </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/mailbox/mailbox.php">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <span class="pull-right-container">
-                  <small class="label pull-right bg-yellow">12</small>
-                  <small class="label pull-right bg-green">16</small>
-                  <small class="label pull-right bg-red">5</small>
-                </span>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Folders</span>
+                        <i class="fa fa-share"></i> <span>Opreations</span>
                         <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -199,13 +192,25 @@
         <!-- /.sidebar -->
     </aside>
 
-        <div class="content-wrapper">
+        <div class="content-wrapper container">
 
             <section class="content-header">
             <h1 class="h2">All members. / <a class="btn btn-default" href="addnew.php"> <span
                             class="glyphicon glyphicon-plus"></span> &nbsp; add new </a></h1>
+<br>
 
+                <ul class="nav navbar-nav">
+                    <li>
+                        <form  id="live-search" action="" class="styled" method="post">
+                            <fieldset>
+                                <input title="Search" type="text" class="form-control" id="filter" placeholder="Search" value="" />
+                            </fieldset>
+                        </form>
+                    </li>
+                </ul>
             </section>
+            <br>
+            <br>
 
            <section class="content">
                <div class="row">
@@ -263,8 +268,8 @@
                            echo "</p>";
 
 // display data in table
-                           echo "<table class='table table-bordered table-responsive pagination css-serial' >";
-                           echo "<tr><th>S/N</th><th>First Name</th> <th>Last Name</th> <th>Matric Number</th> <th>Email Address</th><th>Status</th><th>Gender</th><th>Level</th></tr>";
+                           echo "<table class='table table-bordered table-responsive pagination css-serial' id='myUL' >";
+                           echo "<tr><th>S/N</th><th>First Name</th> <th>Last Name</th> <th>Matric Number</th> <th>Email Address</th><th>Status</th><th>Gender</th><th>State</th></tr>";
 
 // loop through results of database query, displaying them in the table
                            for ($i = $start; $i < $end; $i++)
@@ -281,13 +286,13 @@
                                echo '<td></td>';
                                echo '<td>' . $row[4] . '</td>';
                                echo '<td>' . $row[5] . '</td>';
-                               echo '<td>' . $row[1] . '</td>';
+                               echo '<td id="filter" class="text-bold">' . $row[1] . '</td>';
                                echo '<td>' . $row[3] . '</td>';
                                echo '<td>' . $row[6] . '</td>';
                                echo '<td>' . $row[9] . '</td>';
-                               echo '<td>' . $row[10] . '</td>';
-                               echo '<td><a href="editform.php?id=' . $row[0] . '" class="btn btn-success glyphicon glyphicon-edit">&nbsp;Edit</a></td>';
+                               echo '<td><a href="editform.php?id=' . $row[0] . '" class="btn btn-info glyphicon glyphicon-edit">&nbsp;Edit</a></td>';
                                echo '<td><a href="delete.php?id=' . $row[0] . '" class="btn btn-danger glyphicon glyphicon-trash">&nbsp;Delete</a></td>';
+                              echo '<td><a href="view.php?view_id='. $row[0].'" class="btn btn-success">View</a></td>';
                                echo "</tr>";
                            }
 
@@ -314,10 +319,12 @@
 
     </div>
         <footer class="main-footer">
-
-            <strong>Copyright &copy; 2017 <a href="https://adminlte.io">BHU-NACOSS</a>.</strong> All rights
+            <strong>Copyright &copy; 2018 <a href="https://bhunacoss.com">BHU-NACOSS</a>.</strong> All rights
             reserved.
         </footer>
+    </div>
+
+    </body>
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -349,7 +356,6 @@
     <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
-    </body>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
     </html>

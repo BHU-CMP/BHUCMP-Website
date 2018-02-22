@@ -138,37 +138,9 @@ function renderForm($fname = '', $lname ='', $email ='', $matno ='', $pass ='', 
                     </a>
 
                 </li>
-                <li >
-                    <a href="../pages/layout/fixed.php">
-                        <i class="fa fa-files-o"></i>
-                        <span>Fixed</span>
-                        <span class="pull-right-container">
-            </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../pages/calendar.php">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/mailbox/mailbox.php">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Folders</span>
+                        <i class="fa fa-share"></i> <span>Opreations</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -184,7 +156,7 @@ function renderForm($fname = '', $lname ='', $email ='', $matno ='', $pass ='', 
                             <ul class="treeview-menu">
                                 <li><a href="../Excos-update/index.php"><i class="fa fa-circle-o"></i> Exco's Update</a></li>
                                 <li class="treeview">
-                                    <a href="../Excos-update/add.php"><i class="fa fa-circle-o"></i> Update
+                                    <a href="../Excos-update/add2.php"><i class="fa fa-circle-o"></i> Update
                                         <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -278,7 +250,11 @@ function renderForm($fname = '', $lname ='', $email ='', $matno ='', $pass ='', 
         </div>
         </section>
     </div>
+    <footer class="main-footer">
 
+        <strong>Copyright &copy; 2018 <a href="https://bhunacoss.com">BHU-NACOSS</a>.</strong> All rights
+        reserved.
+    </footer>
 </div>
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

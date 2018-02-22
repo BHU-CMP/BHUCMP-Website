@@ -1,13 +1,13 @@
 <header class="main-header ">
     <!-- Logo -->
-    <a href="" class="logo">
+    <a href="nacoss.jpg" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>B</b>NA</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>BHU-</b>NACOSS</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-fixed-top">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
@@ -19,13 +19,13 @@
                 <!--User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="nacoss.jpg" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?php echo $_SESSION['admin']; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="nacoss.jpg" class="img-circle" alt="User Image">
 
                             <p>
                                 <?php echo $_SESSION['admin']; ?> - BHUNACOSS ADMIN

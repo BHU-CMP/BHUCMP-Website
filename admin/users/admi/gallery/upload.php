@@ -18,21 +18,15 @@ $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
 $image = rand(10,100). "." . $imgExt;
 
     if (in_array($imgExt, $valid_extensions)) {
-        // Check file size '2MB'
+        // Check file size '2MB';
         if ($imgSize < 2000000) {
             move_uploaded_file($tmp_dir,$upload . $image);
-
-
-
-
-            $query= "INSERT INTO gallery (image, description, name) VALUES ('{$image}','{$description}',   '{$name}')";
+            $query= "INSERT INTO gallery (image, description, name) VALUES ('{$image}','{$description}','{$name}')";
             $data = mysqli_query($conn,$query);
             if ($data){
-                header("location: index.php");
+                header("Location: index.php");
                 echo "<script type='application/javascript'>alert('Successfully Uploaded')</script>";
-
                 }else{
-
                 echo "<script type='application/javascript'>alert('Error uploading file')</script>";
             }
         }

@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>REGISTER</title>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <title>Login</title>
-   <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
-    <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <!-- Custom Google Web Font -->
+        <!-- Custom Google Web Font -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic'
           rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-
 
     <!--Bootstrap core-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +21,9 @@
 
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
+
 </head>
+<!--Header-->
 <nav class="navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -43,6 +39,7 @@
         <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
+                <li class="menuItem"><a href="index.php#login-modal">LOGIN</a></li>
                 <li class="menuItem"><a href="index.php#whatis">ABOUT US</a></li>
                 <li class="menuItem"><a href="index.php#screen">EXCOS</a></li>
                 <li class="menuItem"><a href="index.php##guest">GUEST</a></li>
@@ -65,34 +62,92 @@
 </nav>
 <body style="background-color: #1e2a36">
 
-
 <div class="modal-dialog modal-sm">
-
+<?php require_once "gen/registercode.php";?>
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="Login">BHUNACOSS-USERS-LOGIN</h4>
+            <h4 class="modal-title" id="Login">BHUNACOSS-REGISTER</h4>
         </div>
-        <div class="modal-body">
-            <form action="gen/login.php" method="post">
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control" name="uname" id="email-modal"
-                           placeholder="Email or username" required="">
-                </div>
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" name="pass" id="password-modal" placeholder="Password"
-                           required="">
-                </div>
+        <div>
+            <?php if ($register){
+                echo $register;
+            }?>
+        </div>
+        <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" class="form" enctype="multipart/form-data">
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <td><input type="text" class="form-control" name="txt_fname" id="firstname" placeholder="First Name"
+                               required value=""/></td>
 
-                <p class="text-center">
-                    <button class="btn btn-embossed" name="login_btn"><i class="fa fa-sign-in"></i> Log in</button>
-                </p>
-            </form>
-            <!-- <p class="text-center text-muted">Not registered yet?</p>-->
-            <!-- <p class="text-center text-muted"><a href="#"><strong>Register now</strong></a></p>-->
-        </div>
-    </div>
-</div>
- <script src="js/jquery-1.10.2.js"></script>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="txt_lname" placeholder="Last Name" id="lastname"
+                               required value=""/></td>
+
+                </tr>
+                <tr>
+                    <td><input type="email" class="form-control" name="txt_email" placeholder="Email" id="email"
+                               required value=""/></td>
+
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="txt_matno" placeholder="Matric Number"
+                               aria-valuemax="13" id="matricnumber" required value=""/></td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <select title="Gender" class="form-control" required name="txt_gen">
+                                    <option name="">---Choose---</option>
+                                    <option name="Male" value="Male">Male</option>
+                                    <option name="Female" value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td><input type="hidden" class="form-control" name="txt_stat" placeholder="Status" required
+                               value="Student"/></td>
+
+                </tr>
+                <tr>
+
+                    <td><input type="number" class="form-control" name="txt_level" placeholder="Level" required
+                               value=""/></td>
+
+                </tr>
+                <tr>
+                    <td><input type="password" class="form-control" name="txt_pass" placeholder="Password" id="password"
+                               required value=""/></td>
+
+                </tr>
+                <tr>
+                    <td><input type="password" class="form-control" name="txt_cpass" placeholder="Confirm Password"
+                               id="confirmpassword" required value=""/></td>
+
+                </tr>
+                <tr>
+                    <td><input type="file" class="form-control" name="avatar" accept="/image/*" id="avatar" required/>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" value="Submit" name="register" class="btn btn-block btn-success">
+                            Register
+                        </button>
+                    </td>
+
+                </tr>
+
+            </table>
+        </form>
+        <!-- JavaScript -->
+        <script src="js/jquery-1.10.2.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/owl.carousel.js"></script>
         <script src="js/script.js"></script>
@@ -117,6 +172,8 @@
         <script src="js/uiMorphingButton_inflow.js"></script>
         <!-- Magnific Popup core JS file -->
         <script src="js/jquery.magnific-popup.js"></script>
+    </div>
+</div>
 <footer>
     <div class="container">
         <div class="row">
@@ -149,6 +206,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>

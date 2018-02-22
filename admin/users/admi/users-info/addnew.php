@@ -1,81 +1,14 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Joe_PC
+ * Date: 20/11/2017
+ * Time: 3:37 PM
+ */
+
 include "../../../gen/session.php";
 ?>
 
-<?php
-
-error_reporting(~E_NOTICE); // avoid notice
-
-require_once 'dbconfig.php';
-
-if (isset($_POST['btnsave'])) {
-    $matno = $conn->real_escape_string(trim($_POST['txt_matno']));
-    $pass = $conn->real_escape_string(hash("sha256", $_POST['txt_pass']));
-    $email = $conn->real_escape_string(trim($_POST['txt_email']));
-    $fname = $conn->real_escape_string(trim($_POST['txt_fname']));
-    $lname = $conn->real_escape_string(trim($_POST['txt_lname']));
-    $status = $conn->real_escape_string(trim($_POST['txt_stat']));
-    $gender = $conn->real_escape_string(trim($_POST['txt_gen']));
-    $level = $conn->real_escape_string($_POST['txt_level']);
-    $activity = 1;
-    $image = $conn->real_escape_string($_FILES['avatar']['name']);
-
-    $tmp_dir = $_FILES['avatar']['tmp_name'];
-    $imgSize = $_FILES['avatar']['size'];
-
-
-    if (empty($matno)) {
-        $errMSG = "Please Enter Username.";
-    } else if (empty($email)) {
-        $errMSG = "Please Enter Your Email.";
-    } else if (empty($image)) {
-        $errMSG = "Please Select Image File.";
-    } else {
-        $upload_dir = '../../image/'; // upload directory. My problem
-
-        $imgExt = strtolower(pathinfo($image, PATHINFO_EXTENSION)); // get image extension
-
-        // valid image extensions
-        $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-
-        // rename uploading image
-        $image = $fname.$lname . "." . $imgExt;
-
-        // allow valid image file formats
-        if (in_array($imgExt, $valid_extensions)) {
-            // Check file size '2MB'
-            if ($imgSize < 2000000) {
-                move_uploaded_file($tmp_dir, $upload_dir . $image);
-            } else {
-                $errMSG = "Sorry, your file is too large.";
-            }
-        } else {
-            $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        }
-    }
-    // if no error occured, continue ....
-    if (!isset($errMSG)) {
-        $stmt = $DB_con->prepare('INSERT INTO login(matno, password, email, fname, lname, status, image, activitystate, gender, level)
-  VALUES(:mat, :ps, :em,:fn, :ln, :st,:im, :ac, :ge,:le)');
-        $stmt->bindParam(':mat', $matno);
-        $stmt->bindParam(':ps', $pass);
-        $stmt->bindParam(':em', $email);
-        $stmt->bindParam(':fn', $fname);
-        $stmt->bindParam(':ln', $lname);
-        $stmt->bindParam(':st', $status);
-        $stmt->bindParam(':im', $image);
-        $stmt->bindParam(':ac', $activity);
-        $stmt->bindParam(':ge', $gender);
-        $stmt->bindParam(':le', $level);
-        if ($stmt->execute()) {
-            $successMSG = "Successfully registered ...";
-            header("refresh:5;add.php"); // redirects image view page after 5 seconds.
-        } else {
-            $errMSG = "Error while registering....";
-        }
-    }
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,7 +41,8 @@ if (isset($_POST['btnsave'])) {
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <!--endif-->
 
@@ -158,7 +92,8 @@ if (isset($_POST['btnsave'])) {
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="../../../gen/logout.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="../../../gen/logout.php?logout=true" class="btn btn-default btn-flat">Sign
+                                        out</a>
                                 </div>
                             </li>
                         </ul>
@@ -190,71 +125,45 @@ if (isset($_POST['btnsave'])) {
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                    </button>
-                  </span>
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                                    class="fa fa-search"></i>
+                        </button>
+                      </span>
                 </div>
             </form>
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-                <li >
+                <li>
                     <a href="../index.php">
                         <i class="fa fa-dashboard"></i><span>Dashboard</span>
                     </a>
 
                 </li>
-                <li >
-                    <a href="../pages/layout/fixed.php">
-                        <i class="fa fa-files-o"></i>
-                        <span>Fixed</span>
-                        <span class="pull-right-container">
-                </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../pages/calendar.php">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-                  <small class="label pull-right bg-red">3</small>
-                  <small class="label pull-right bg-blue">17</small>
-                </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/mailbox/mailbox.php">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <span class="pull-right-container">
-                  <small class="label pull-right bg-yellow">12</small>
-                  <small class="label pull-right bg-green">16</small>
-                  <small class="label pull-right bg-red">5</small>
-                </span>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Folders</span>
+                        <i class="fa fa-share"></i> <span>Opreations</span>
                         <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="../users-info/index.php"><i class="fa fa-circle-o"></i> Users Information</a></li>
                         <li class="treeview">
                             <a href="#"><i class="fa fa-circle-o"></i> Exco
                                 <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="../Excos-update/index.php"><i class="fa fa-circle-o"></i> Exco's Update</a></li>
-                                <li class="treeview">
-                                    <a href="../Excos-update/add.php"><i class="fa fa-circle-o"></i> Update
-                                        <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Excos-update/index.php"><i class="fa fa-circle-o"></i> Exco's Update</a>
+                                </li>
+                                <li class="treeview">
+                                    <a href="../Excos-update/add2.php"><i class="fa fa-circle-o"></i> Update
+                                        <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                                     </a>
                                 </li>
                             </ul>
@@ -268,86 +177,100 @@ if (isset($_POST['btnsave'])) {
     </aside>
 
     <div class="content-wrapper">
+        <?php
+        require_once "../../../gen/registerusers.php";
+        ?>
 
         <section class="content-header">
             <h1 class="h2">Add new user. <a class="btn btn-default" href="index.php"> <span
-                        class="glyphicon glyphicon-eye-open"></span> &nbsp; view all </a></h1>
+                            class="glyphicon glyphicon-eye-open"></span> &nbsp; View all </a></h1>
         </section>
-
-
-    <?php
-    if (isset($errMSG)) {
-        ?>
-        <div class="alert alert-danger">
-            <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong>
+        <br>
+        <div>
+            <?php if ($register){
+                echo $register;
+            }?>
         </div>
-        <?php
-    } else if (isset($successMSG)) {
-        ?>
-        <div class="alert alert-success">
-            <strong><span class="glyphicon glyphicon-info-sign"></span> <?php echo $successMSG; ?></strong>
-        </div>
-        <?php
-    }
-    ?>
+        <form method="post" enctype="multipart/form-data" action="<?php $_SERVER['PHP_SELF'] ?>" class="form-horizontal">
 
-    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+            <table class="table table-bordered table-responsive">
 
-        <table class="table table-bordered table-responsive">
+                <tr>
+                    <td><input class="form-control" type="text" name="txt_fname" placeholder="First Name"
+                               /></td>
+                </tr>
 
-            <tr>
-                <td><input class="form-control" type="text" name="txt_fname" placeholder="First Name"
-                           value="<?php echo $fname; ?>"/></td>
-            </tr>
+                <tr>
+                    <td><input class="form-control" type="text" name="txt_lname" placeholder="Your Last Name"
+                               /></td>
+                </tr>
 
-            <tr>
-                <td><input class="form-control" type="text" name="txt_lname" placeholder="Your Last Name"
-                           value="<?php echo $lname; ?>"/></td>
-            </tr>
+                <tr>
+                    <td><input class="form-control" type="email" name="txt_email" placeholder="Enter Email"
+                               /></td>
+                </tr>
+                <tr>
+                    <td><input class="form-control" type="text" maxlength="" name="txt_matno" placeholder="Enter Matric-Number"
+                               /></td>
+                </tr>
+                <tr>
+                    <td><select title="Gender" class="form-control" required autofocus name="txt_stat">
+                            <option name="" value="">Status</option>
+                            <option name="Student" value="Student">Student</option>
+                            <option name="Leccturer" value="Lecturer">Lecturer</option>
+                            <option name="HOD" value="HOD">HOD</option>
+                        </select></td>
+                </tr>
 
-            <tr>
-                <td><input class="form-control" type="text" name="txt_email" placeholder="Enter Email"
-                           value="<?php echo $email; ?>"/></td>
-            </tr>
-            <tr>
-                <td><input class="form-control" type="text" name="txt_matno" placeholder="Enter Matric-Number"
-                           value="<?php echo $matno; ?>"/></td>
-            </tr>
-            <tr>
-                <td><input class="form-control" type="number" name="txt_level" placeholder="Enter Level"
-                           value="<?php echo $matno; ?>"/></td>
-            </tr>
 
-            <tr>
-                <td><select title="Gender" class="form-control" required autofocus name="txt_gender">
-                        <option name="" value="Male">...Gender...</option>
-                        <option name="Male" value="Male">Male</option>
-                        <option name="Female" value="Female">Female</option>
-                    </select></td>
-            </tr>
+                <tr>
+                    <td><select title="Gender" class="form-control" required autofocus name="txt_level">
+                            <option name="" >Select Level</option>
+                            <option name="100lvl" value="100level">100lvl</option>
+                            <option name="200lvl" value="200level">200lvl</option>
+                            <option name="300lvl" value="300level">300lvl</option>
+                            <option name="400lvl" value="400level">400lvl</option>
+                        </select></td>
+                </tr>
 
-            <tr>
-                <td><input class="form-control" type="text" name="txt_upass" placeholder="Input password"
-                           value="<?php echo $pass; ?>"/></td>
-            </tr>
+                <tr>
+                    <td><select title="Gender" class="form-control" required autofocus name="txt_gen">
+                            <option name="" value="Male">Gender..</option>
+                            <option name="Male" value="Male">Male</option>
+                            <option name="Female" value="Female">Female</option>
+                        </select></td>
+                </tr>
 
-            <tr>
-                <td><input class="input-group" type="file" name="avatar" accept="image/*"/></td>
-            </tr>
+                <tr>
+                    <td><input class="form-control" type="text" name="txt_pass" placeholder="Input password"
+                               /></td>
+                </tr>
+                <tr>
+                    <td><input class="form-control" type="text" name="txt_cpass" placeholder="Confirm password"
+                               /></td>
+                </tr>
 
-            <tr>
-                <td colspan="2">
-                    <button type="submit" name="btnsave" class="btn btn-default">
-                        <span class="glyphicon glyphicon-save"></span> &nbsp; save
-                    </button>
-                </td>
-            </tr>
+                <tr>
+                    <td><input class="input-group" type="file" name="avatar" accept="image/*"/></td>
+                </tr>
 
-        </table>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" name="btnsave" class="btn btn-default">
+                            <span class="glyphicon glyphicon-save"></span> &nbsp; Save
+                        </button>
+                    </td>
+                </tr>
 
-    </form>
+            </table>
+        </form>
+    </div>
+    <footer class="main-footer">
 
-</div>
+        <strong>Copyright &copy; 2018 <a href="https://bhunacoss.com">BHU-NACOSS</a>.</strong> All rights
+        reserved.
+    </footer>
+
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
