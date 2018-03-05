@@ -281,6 +281,8 @@
                     <p>
                         <a href="malito:cooljoe464@gmail.com">Onyedinefu Joel</a><br/>
                         <a href="malito:Speedyclesh@gmail.com">Godfrey Akusuk</a><br><br>
+                        <a href="malito:Speedyclesh@gmail.com">Olufemi Johnson</a><br><br>
+
                         Go to: <a href="http://www.binghamuni.edu.ng" target="_blank">Bingham Site</a>
                     </p></h3>
 
