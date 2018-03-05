@@ -277,7 +277,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h3 class="footer-title">Developed by:
+                <h3 class="footer-title">Credit to:
                     <p>
                         <a href="malito:cooljoe464@gmail.com">Onyedinefu Joel</a><br/>
                         <a href="malito:Speedyclesh@gmail.com">Godfrey Akusuk</a><br><br>
