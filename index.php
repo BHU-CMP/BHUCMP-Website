@@ -162,7 +162,6 @@
     </div>
 </div>
 
-
 <!-- Banner Download -->
 <div id="admission" class="content-section-a">
     <div class="container">
@@ -252,7 +251,6 @@
             <hr class="featurette-divider hidden-lg">
             <div class="col-md-5 col-md-push-1 address">
                 <address>
-                    <h3>Office Location</h3>
                     <p class="lead"><a href="#">BINGHAM UNIVERSITY<br>
                             NASARAWA STATE</a><br>
                         Phone: XXX-XXX-XXXX</p>
@@ -271,43 +269,37 @@
         </div>
     </div>
 </div>
-
-
 <footer>
-    <div class="container">
+    <div id="contact" class="container footer-banner">
         <div class="row">
-            <div class="col-md-7">
-                <h3 class="footer-title">Credit to:
-                    <p>
-                        <a href="malito:cooljoe464@gmail.com">Onyedinefu Joel</a><br/>
-                        <a href="malito:Speedyclesh@gmail.com">Godfrey Akusuk</a><br><br>
-                        <a href="malito:Speedyclesh@gmail.com">Olufemi Johnson</a><br><br>
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <h4><strong><a href="http://bhunacoss.com">BHU-NACOSS</a></strong>
+                </h4>
+                <p><a href="http://binghamuni.edu.ng/">BINGHAM UNIVERSITY</a>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:bhunacoss@gmail.com">bhunacoss@gmail.com</a>
+                    </li>
+                </ul>
 
-                        Go to: <a href="http://www.binghamuni.edu.ng" target="_blank">Bingham Site</a>
-                    </p></h3>
-
-
-                <!-- LICENSE -->
-                <a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
-                   property="dc:title">Flatfy Theme </a> by
-                <a rel="dc:creator" href="http://www.andreagalanti.it"
-                   property="cc:attributionName">Andrea Galanti</a>
-                is licensed to the public under
-                <BR>the <a rel="license"
-                           href="http://creativecommons.org/licenses/by-nc/3.0/it/deed.it">Creative
-                    Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
-
-
-            </div> <!-- /col-xs-7 -->
-
-            <div class="col-md-5">
-                <div class="footer-banner">
-                    <h3 class="footer-title">BHU-NACOSS</h3>
-
-                </div>
+                <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-instagram fa-fw fa-3x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                    </li>
+                </ul>
+                <p><strong>Credit to :</strong><br>
+                    <a href="mailto:cooljoe464@gmail.com">Onyedinefu Joel</a><br/>
+                    <a href="mailto:Speedyclesh@gmail.com">Godfrey Akusuk</a><br>
+                    <a href="mailto:Olufemijohnson92@gmail.com">Olufemi Johnson</a><br>
+                </p>
+                <hr class="small">
+                <p class="text-muted">2018 Copyright &copy; BHU-NACOSS </p>
             </div>
         </div>
     </div>
+    <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
 </footer>
 
 <!-- JavaScript -->
@@ -324,7 +316,6 @@
 
         });
     });
-
 </script>
 <!-- Smoothscroll -->
 <script type="text/javascript" src="js/jquery.corner.js"></script>
