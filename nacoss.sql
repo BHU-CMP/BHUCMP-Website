@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2017 at 09:03 PM
+-- Generation Time: Mar 10, 2018 at 09:48 PM
 -- Server version: 5.7.11
--- PHP Version: 7.0.4
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,7 +39,8 @@ CREATE TABLE `excos` (
 
 INSERT INTO `excos` (`excos_name`, `excos_image`, `excos_title`, `id`) VALUES
 ('Banso Wisdom', '76.jpg', 'PRESIDENT', 1),
-('Dalahol Debbie', '93.jpg', 'VICE PRESIDENT', 2);
+('Dalahol Debbie', '93.jpg', 'VICE-PRESIDENT', 2),
+('Joel Onyedinefu', '40.png', 'SEC-GEN', 3);
 
 -- --------------------------------------------------------
 
@@ -83,16 +84,19 @@ CREATE TABLE `login` (
   `image` varchar(50) NOT NULL,
   `activitystate` varchar(20) NOT NULL,
   `gender` varchar(50) NOT NULL,
-  `level` bigint(20) NOT NULL
+  `level` bigint(50) NOT NULL,
+  `online` varchar(50) NOT NULL,
+  `date` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`, `gender`, `level`) VALUES
-(28, 'bhu/15/04/05/0003', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'kassandraakut@gmail.com', 'Cassandra', 'Akut', 'Student', 'CassandraAkut.jpg', '1', 'Female', 300),
-(29, 'bhu/15/04/05/0012', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Cooljoe464@gmail.com', 'Joel', 'Onyedinefu', 'Student', 'JoelOnyedinefu.jpg', '1', 'Male', 300);
+INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `status`, `image`, `activitystate`, `gender`, `level`, `online`, `date`) VALUES
+(29, 'bhu/15/04/05/0012', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Cooljoe464@gmail.com', 'Joel', 'Onyedinefu', 'Student', 'JoelOnyedinefu.jpg', 'Activated', 'Male', 300, 'Offline', '0000-00-00 00:00:00'),
+(31, 'bhu/15/04/05/0013', '$2y$10$VLRLKpuhD5QUpFO4t7LyyOeBO1pPQ37g8F8RqmmtHiBwdvYNjjYsy', 'olufemi@gmail.com', 'John', 'Oluefemi', 'Student', 'JohnOluefemi.jpg', 'Activated', 'Male', 300, 'Offline', '2011-02-17 23:00:00'),
+(33, 'bhu/15/04/05/0039', '$2y$10$XPpLc9hQse2Hp4exiJbJ.OS.Ro9jRLxta5BvQjiwDur0Wq2zvmVlq', 'jj@gmail.com', 'jndjsjhh', 'bdjshdjb', 'Student', 'jndjsjhhbdjshdjb.jpg', 'Activated', 'Male', 400, 'Online', '2010-03-17 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -102,10 +106,9 @@ INSERT INTO `login` (`id`, `matno`, `password`, `email`, `fname`, `lname`, `stat
 
 CREATE TABLE `nacoss_admin` (
   `id` int(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `activitystate` varchar(50) NOT NULL,
-  `email` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -114,8 +117,9 @@ CREATE TABLE `nacoss_admin` (
 -- Dumping data for table `nacoss_admin`
 --
 
-INSERT INTO `nacoss_admin` (`id`, `username`, `password`, `activitystate`, `email`, `fname`, `lname`) VALUES
-(1, 'adminusername', '1234', '1', 0, '', '');
+INSERT INTO `nacoss_admin` (`id`, `username`, `password`, `email`, `fname`, `lname`) VALUES
+(1, 'adminusername', '1234', '0', '', ''),
+(2, 'kfhsdbf', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'jdfhklf@gmail.com', 'dkjhk', 'dkjlfhsh');
 
 -- --------------------------------------------------------
 
@@ -145,56 +149,23 @@ INSERT INTO `nacoss_contact` (`id`, `name`, `phonenumber`, `email`, `message`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nacoss_forum_answers`
---
-
-CREATE TABLE `nacoss_forum_answers` (
-  `answer_id` int(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `question_id` int(56) NOT NULL,
-  `answer_given` text NOT NULL,
-  `submitted_time` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nacoss_forum_questions`
---
-
-CREATE TABLE `nacoss_forum_questions` (
-  `question_id` int(100) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `question` text NOT NULL,
-  `submitted_time` varchar(50) NOT NULL,
-  `question_tags` varchar(50) NOT NULL,
-  `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nacoss_likeanddislike`
---
-
-CREATE TABLE `nacoss_likeanddislike` (
-  `answer_id` int(50) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `likes` int(50) NOT NULL,
-  `dislikes` int(50) NOT NULL,
-  `action` varchar(20) NOT NULL,
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `timetable`
 --
 
 CREATE TABLE `timetable` (
   `image` int(11) DEFAULT NULL,
   `pdf` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userson`
+--
+
+CREATE TABLE `userson` (
+  `uvon` varchar(32) NOT NULL,
+  `dt` int(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -236,22 +207,10 @@ ALTER TABLE `nacoss_contact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `nacoss_forum_answers`
+-- Indexes for table `userson`
 --
-ALTER TABLE `nacoss_forum_answers`
-  ADD PRIMARY KEY (`answer_id`);
-
---
--- Indexes for table `nacoss_forum_questions`
---
-ALTER TABLE `nacoss_forum_questions`
-  ADD PRIMARY KEY (`question_id`);
-
---
--- Indexes for table `nacoss_likeanddislike`
---
-ALTER TABLE `nacoss_likeanddislike`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `userson`
+  ADD PRIMARY KEY (`uvon`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -261,7 +220,7 @@ ALTER TABLE `nacoss_likeanddislike`
 -- AUTO_INCREMENT for table `excos`
 --
 ALTER TABLE `excos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `gallery`
 --
@@ -271,32 +230,17 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `nacoss_admin`
 --
 ALTER TABLE `nacoss_admin`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `nacoss_contact`
 --
 ALTER TABLE `nacoss_contact`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `nacoss_forum_answers`
---
-ALTER TABLE `nacoss_forum_answers`
-  MODIFY `answer_id` int(50) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `nacoss_forum_questions`
---
-ALTER TABLE `nacoss_forum_questions`
-  MODIFY `question_id` int(100) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `nacoss_likeanddislike`
---
-ALTER TABLE `nacoss_likeanddislike`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
