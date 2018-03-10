@@ -6,14 +6,8 @@
  * Time: 3:37 PM
  */
 session_start();
-include "../../gen/config.php";
-if (!isset($_SESSION['admin'])) {
-    header("Location: ../index.php");
-} else if (isset($_SESSION['admin']) != "") {
-    header("Location: ../users/home.html");
-}
+include "config.php";
 
-error_reporting(''); // avoid notice
 $adm='';
 
 if (isset($_REQUEST['registeradmin'])) {
@@ -25,14 +19,13 @@ if (isset($_REQUEST['registeradmin'])) {
         $email = $conn->real_escape_string(trim($_POST['txt_email']));
         $fname = $conn->real_escape_string(trim($_POST['txt_fname']));
         $lname = $conn->real_escape_string(trim($_POST['txt_lname']));
-        $activity = 1;
 
         $checkUName = "SELECT * FROM nacoss_admin WHERE username = '$username'";
         $run = mysqli_query($conn, $checkUName);
 
         if (mysqli_num_rows($run) > 0) {
             $adm='Matric Number already registered.';
-            exit();
+
         }
 
         $checkName = "SELECT * FROM nacoss_admin WHERE email = '$email'";
@@ -40,9 +33,8 @@ if (isset($_REQUEST['registeradmin'])) {
 
         if (mysqli_num_rows($rum) > 0) {
             $adm='Email already in use.';
-            exit();
         }
-        $side = "INSERT INTO nacoss_admin (username, password, email, fname, lname, activitystate) VALUES ('{$username}','{$pass}','{$email}','{$fname}','{$lname}','{$activity}')";
+        $side = "INSERT INTO nacoss_admin (username, password, email, fname, lname) VALUES ('{$username}','{$pass}','{$email}','{$fname}','{$lname}')";
 
         $data = mysqli_query($conn, $side) or die(mysqli_error($conn));
         if ($data) {

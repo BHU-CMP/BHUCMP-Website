@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>REGISTER ADMIN</title>
+    <title>REGISTER</title>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
-    <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="../css/magnific-popup.css">
     <!-- Custom Google Web Font -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic'
           rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-
 
     <!--Bootstrap core-->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+
             <a class="navbar-brand" href="../index.php">BHU-NACOSS</a>
         </div>
 
@@ -52,12 +49,17 @@
 <body style="background-color: #1e2a36">
 
 <div class="modal-dialog modal-sm">
-
+    <?php require_once "gen/registeradmin.php";?>
     <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title" id="Login">BHUNACOSS-REGISTER</h4>
         </div>
-        <form method="POST" action="gen/registeradmin.php" class="form" enctype="multipart/form-data">
+        <div>
+            <?php if ($adm){
+                echo $adm;
+            }?>
+        </div>
+        <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" class="form" enctype="multipart/form-data">
             <table class="table table-bordered table-responsive">
                 <tr>
                     <td><input type="text" class="form-control" name="txt_fname" id="firstname" placeholder="First Name"
@@ -100,9 +102,6 @@
 
             </table>
         </form>
-        <!-- JavaScript -->
-
-        <!-- Magnific Popup core JS file -->
     </div>
 </div>
 </body>
