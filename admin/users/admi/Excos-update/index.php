@@ -198,10 +198,10 @@ include "dbconfig.php";
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
                 ?>
-                <div class="col-xs-3">
+                <div class="col-xs-3"><br>
 
-                    <p class="page-header" title="Click to view"><?php echo $row['excos_title']; ?></p>
-                    <p class="page-header" title="Click to view"><?php echo $row['excos_name']; ?></p>
+                    <p class="" title="Exco's Title"><b><?php echo $row['excos_title']; ?></b></p>
+                    <p class="" title="Exco's Name"><?php echo $row['excos_name']; ?></p>
 
                     <a title="Click to zoom-in and zoom-out" class="zoom"  href="excosimages/<?php echo $row['excos_image']; ?>" >
                         <img  src="excosimages/<?php echo $row['excos_image']; ?>" class="img-rounded" width="150px" height="150px" /></a>

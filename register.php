@@ -174,37 +174,5 @@
         <script src="js/jquery.magnific-popup.js"></script>
     </div>
 </div>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <h3 class="footer-title">Developed by ???</h3>
-                <p>???<br/>
-                    ???<br/>
-                    Go to: <a href="http://www.binghamuni.edu.ng" target="_blank">Bingham Full Site</a>
-                </p>
-
-                <!-- LICENSE -->
-                <a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
-                   property="dc:title">Flatfy Theme </a> by
-                <a rel="dc:creator" href="http://www.andreagalanti.it"
-                   property="cc:attributionName">Andrea Galanti</a>
-                is licensed to the public under
-                <BR>the <a rel="license"
-                           href="http://creativecommons.org/licenses/by-nc/3.0/it/deed.it">Creative
-                    Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
-
-
-            </div> <!-- /col-xs-7 -->
-
-            <div class="col-md-5">
-                <div class="footer-banner">
-                    <h3 class="footer-title">BHU-NACOSS</h3>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 </body>
 </html>

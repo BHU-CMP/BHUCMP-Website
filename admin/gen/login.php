@@ -15,7 +15,7 @@ include_once 'config.php';
 $login = "";
 if (isset($_REQUEST['login_btn'])) {
     $username = $conn->real_escape_string(strtoupper($_POST['uname']));
-    $password = $_POST['pass'];
+    $password = hash("sha256", $_POST['pass']);
 
 
     $query = "SELECT * FROM nacoss_admin WHERE username='$username' OR email='$username'";
