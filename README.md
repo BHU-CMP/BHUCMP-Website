@@ -6,8 +6,7 @@ This README would normally document whatever steps are necessary to get your app
 * This is the creation of Bingham University Website
 
 ### How do I get set up? ###
-
-* Steps
-* Create a folder locally on your system.
-* Use CMD to navigate to the folder.
-* Then type 'git clone https://meckblack@bitbucket.org/bhunacosswebsite/nacoss.git'
+* Clone this repository
+* Make changes
+* Make a pull request
+* Await approval and merging
